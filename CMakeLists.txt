@@ -15,9 +15,9 @@ set(XDMF_MINOR_VERSION 0)
 set(XDMF_PATCH_VERSION 0)
 set(XDMF_VERSION "${XDMF_MAJOR_VERSION}.${XDMF_MINOR_VERSION}.${XDMF_PATCH_VERSION}")
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_INSTALL_LIBDIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_INSTALL_LIBDIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_INSTALL_BINDIR}")
 
 if(BUILD_SHARED_LIBS)
   set(BUILD_SHARED 1)
@@ -158,7 +158,7 @@ if(XDMF_WRAP_PYTHON)
 
     set(
       PYTHON_INSTALL_DIR
-      ${CMAKE_INSTALL_PREFIX}/lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/xdmf
+			${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/xdmf
       )
 
     string(TOUPPER ${python_name} python_name_upper)
@@ -211,7 +211,7 @@ if(XDMF_WRAP_JAVA)
       set(separator "\;")
     else()
       set(java_files ${XDMF_JAVA_DIR}/*.java)
-      set(java_dest "lib/java")
+      set(java_dest "${CMAKE_INSTALL_LIBDIR}/java")
       set(separator ":")
     endif()
 
@@ -240,7 +240,7 @@ if(XDMF_WRAP_JAVA)
     set(java_cp_jars "${java_cp_jars}${separator}${${java_name}_JAVA_JAR}")
     string(TOUPPER ${java_name} java_name_upper)
     set(${java_name_upper}_JAVA_JAR
-      ${CMAKE_INSTALL_PREFIX}/lib/java/${java_name}.jar)
+      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/java/${java_name}.jar)
     get_directory_property(${java_name}Parent PARENT_DIRECTORY)
     if(NOT "${${java_name}Parent}" STREQUAL "")
       set(${java_name_upper}_JAVA_JAR ${${java_name_upper}_JAVA_JAR}
@@ -249,7 +249,7 @@ if(XDMF_WRAP_JAVA)
     endif()
 
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${java_name}.jar
-      DESTINATION lib/java)
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}/java)
     install(TARGETS ${SWIG_MODULE_${java_name}Java_REAL_NAME}
       DESTINATION ${java_dest})
   endmacro()
@@ -326,7 +326,7 @@ if(NOT XDMF_BUILD_CORE_ONLY)
     endif()
     set(
       XDMF_PYTHON_INSTALL_DIR
-      ${CMAKE_INSTALL_PREFIX}/lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/xdmf
+      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/xdmf
       )
   endif()
 
