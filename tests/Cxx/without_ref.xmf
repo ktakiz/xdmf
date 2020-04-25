@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<Xdmf xmlns:xi="http://www.w3.org/2001/XInclude" Version="3.0">
+  <Domain>
+    <Grid Name="MESH/mien">
+      <Topology NumberOfElements="6" TopologyType="Quadrilateral">
+        <DataItem Dimensions="6 4" Endian="Big" Format="Binary" Name="MESH/mien" NumberType="Int">MESH/mien</DataItem>
+      </Topology>
+      <Geometry GeometryType="XY">
+        <DataItem Dimensions="12 2" Endian="Big" Format="Binary" Name="MESH/mxyz" NumberType="Float" Precision="8">MESH/mxyz</DataItem>
+      </Geometry>
+    </Grid>
+  </Domain>
+</Xdmf>
