@@ -712,7 +712,7 @@ int main(int argc, char *argv[])
 
                 if (connectingGroup)
                 {
-                        // Recieve string from Master group
+                        // Receive string from Master group
                         exampleDSMComm->SetDsmPortName(portString);
                         exampleDSMComm->Connect();
 
@@ -722,7 +722,7 @@ int main(int argc, char *argv[])
 
                 if (connectingGroup)
                 {
-                        // Recieve string from Master group
+                        // Receive string from Master group
                         exampleDSMComm->SetDsmPortName(portString);
                         exampleBuffer->Connect();
 
