@@ -519,14 +519,14 @@ if __name__ == "__main__":
                         exampleDSMComm.ClosePort()
 
                 if (connectingGroup):
-                        // Recieve string from Master group
+                        // Receive string from Master group
                         exampleDSMComm.SetDsmPortName(portString)
                         exampleDSMComm.Connect()
                         // When done with connection
                         exampleDSMComm.Disconnect()
 
                 if (connectingGroup):
-                        // Recieve string from Master group
+                        // Receive string from Master group
                         exampleDSMComm.SetDsmPortName(portString);
                         exampleManager.Connect();
                         // When done with connection
